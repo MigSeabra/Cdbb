@@ -9,7 +9,7 @@ public class BillService {
 
     public Double totalCallsCost(List<String> calls) {
 
-        CallsInput callsInput = CallsMapper.toCallsInput(calls);
+        CallsInput call = CallsMapper.toCallsInput(calls);
 
 
         return 0.0;

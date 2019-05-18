@@ -1,43 +1,16 @@
 package Models;
 
-import java.time.LocalTime;
+import java.util.List;
 
 public class CallsInput {
 
-    private LocalTime callStartTime;
-    private LocalTime callEndTime;
-    private Integer callNumber;
-    private Integer calledNumber;
+    private List<Call> callList;
 
-    public LocalTime getCallStartTime() {
-        return callStartTime;
+    public List<Call> getCallList() {
+        return callList;
     }
 
-    public void setCallStartTime(LocalTime callStartTime) {
-        this.callStartTime = callStartTime;
-    }
-
-    public LocalTime getCallEndTime() {
-        return callEndTime;
-    }
-
-    public void setCallEndTime(LocalTime callEndTime) {
-        this.callEndTime = callEndTime;
-    }
-
-    public Integer getCallNumber() {
-        return callNumber;
-    }
-
-    public void setCallNumber(Integer callNumber) {
-        this.callNumber = callNumber;
-    }
-
-    public Integer getCalledNumber() {
-        return calledNumber;
-    }
-
-    public void setCalledNumber(Integer calledNumber) {
-        this.calledNumber = calledNumber;
+    public void setCallList(List<Call> callList) {
+        this.callList = callList;
     }
 }
