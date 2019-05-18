@@ -17,6 +17,11 @@ public class Application {
      */
     public static void main(String ... args) {
 
+        if (args == null || args.length != 1) {
+            System.out.println("Invalid input file, please try again");
+            System.exit(-1);
+        }
+
         BillService billService = new BillService();
 
         try {
