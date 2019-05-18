@@ -12,36 +12,33 @@ import java.util.regex.Pattern;
 
 public class CallsMapper {
 
-    private Pattern p = Pattern.compile("(\\d{2}):(\\d{2}):(\\d{2});(\\d{2}):(\\d{2}):(\\d{2});\\+(\\d+);\\+(\\d+)");
-
-    public static CallsInput toCallsInput(List<String> calls) {
+    public static CallsInput toCallsInput(List<String> calls) throws InvalidCallInputException {
         CallsInput resp = new CallsInput();
 
         if (CollectionUtils.isEmpty(calls)) {
             return resp;
         }
 
-
+        for (String call : calls) {
+            resp.addCall(toCall(call));
+        }
 
         return resp;
     }
 
-    private Call toCall(String inCall) throws InvalidCallInputException {
-        Call resp = null;
-
+    private static Call toCall(String inCall) throws InvalidCallInputException {
+        Pattern p = Pattern.compile("(\\d{2}):(\\d{2}):(\\d{2});(\\d{2}):(\\d{2}):(\\d{2});\\+(\\d+);\\+(\\d+)");
         Matcher m = p.matcher(inCall);
 
         if (!m.matches()) {
             throw new InvalidCallInputException("invalid input call format");
         }
 
-        LocalTime callStartTime = LocalTime.parse(m.group(1));
-        LocalTime callEndTime = LocalTime.parse(m.group(2));
-        Integer callNumber = Integer.valueOf(m.group(3));
-        Integer calledNumber = Integer.valueOf(m.group(4));
+        LocalTime callStartTime = LocalTime.parse(m.group(1) + ":" + m.group(2) + ":" + m.group(3));
+        LocalTime callEndTime = LocalTime.parse(m.group(4) + ":" + m.group(5) + ":" + m.group(6));
+        Integer callNumber = Integer.valueOf(m.group(7));
+        Integer calledNumber = Integer.valueOf(m.group(8));
 
-        resp = new Call(callStartTime, callEndTime, callNumber, calledNumber);
-
-        return resp;
+        return new Call(callStartTime, callEndTime, callNumber, calledNumber);
     }
 }
