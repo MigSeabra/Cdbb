@@ -40,7 +40,7 @@ public class CallsMapper {
         Long callNumber = Long.valueOf(m.group(7));
         Long calledNumber = Long.valueOf(m.group(8));
 
-        if (callStartTime.compareTo(callEndTime) <= 0) {
+        if (callStartTime.compareTo(callEndTime) >= 0) {
             throw new InvalidCallInputException("call end time must be greater than call start time");
         }
 
