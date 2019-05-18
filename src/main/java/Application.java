@@ -1,3 +1,4 @@
+import Exceptions.InvalidCallInputException;
 import Services.BillService;
 
 import java.io.IOException;
@@ -12,14 +13,14 @@ public class Application {
 
         BillService billService = new BillService();
 
-        List<String> calls = null;
-
         try {
-            calls = Files.readAllLines(Paths.get(args[0]), StandardCharsets.UTF_8);
+            List<String> calls = Files.readAllLines(Paths.get(args[0]), StandardCharsets.UTF_8);
+            Double totalCost = billService.totalCallsCost(calls);
+            System.out.println(totalCost);
         } catch (IOException e) {
             System.out.println("Reading from file failed: " + e.getMessage());
+        } catch (InvalidCallInputException e) {
+            System.out.println("Error parsing file: " + e.getMessage());
         }
-
-        System.out.println(billService.totalCallsCost(calls));
     }
 }

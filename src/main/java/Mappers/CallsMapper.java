@@ -6,6 +6,7 @@ import Models.CallsInput;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.time.LocalTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -39,6 +40,12 @@ public class CallsMapper {
         Integer callNumber = Integer.valueOf(m.group(7));
         Integer calledNumber = Integer.valueOf(m.group(8));
 
-        return new Call(callStartTime, callEndTime, callNumber, calledNumber);
+        if (callStartTime.compareTo(callEndTime) <= 0) {
+            throw new InvalidCallInputException("call end time must be greater than call start time");
+        }
+
+        Long callDuration = callStartTime.until(callEndTime, ChronoUnit.SECONDS);
+
+        return new Call(callStartTime, callEndTime, callNumber, calledNumber, callDuration);
     }
 }

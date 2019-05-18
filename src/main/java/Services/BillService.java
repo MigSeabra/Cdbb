@@ -8,13 +8,10 @@ import java.util.List;
 
 public class BillService {
 
-    public Double totalCallsCost(List<String> calls) throws InvalidCallInputException {
+    public Double totalCallsCost(List<String> rawCalls) throws InvalidCallInputException {
 
-        CallsInput call = CallsMapper.toCallsInput(calls);
+        CallsInput calls = CallsMapper.toCallsInput(rawCalls);
 
-
-
-        return 0.0;
+        return calls.getTotalCallsCost();
     }
-
 }

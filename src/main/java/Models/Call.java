@@ -8,14 +8,16 @@ public class Call {
     private LocalTime callEndTime;
     private Integer callNumber;
     private Integer calledNumber;
+    private Long callDuration;
 
     public Call() {}
 
-    public Call(LocalTime callStartTime, LocalTime callEndTime, Integer callNumber, Integer calledNumber) {
+    public Call(LocalTime callStartTime, LocalTime callEndTime, Integer callNumber, Integer calledNumber, Long callDuration) {
         this.callStartTime = callStartTime;
         this.callEndTime = callEndTime;
         this.callNumber = callNumber;
         this.calledNumber = calledNumber;
+        this.callDuration = callDuration;
     }
 
     public LocalTime getCallStartTime() {
@@ -48,5 +50,13 @@ public class Call {
 
     public void setCalledNumber(Integer calledNumber) {
         this.calledNumber = calledNumber;
+    }
+
+    public Long getCallDuration() {
+        return callDuration;
+    }
+
+    public void setCallDuration(Long callDuration) {
+        this.callDuration = callDuration;
     }
 }
