@@ -22,8 +22,12 @@ public class Call {
 
         Double minutes = Math.ceil((double)duration/60);
 
-        this.cost = minutes <= 5 ? CallCosts.FIVE_MINUTES.getValue()*minutes :
-                CallCosts.FIVE_MINUTES.getValue()*5 + CallCosts.REMAINING_MINUTES.getValue()*(minutes-5);
+        if (minutes <= CallCosts.FIVE_MINUTES.getMinutes()) {
+            this.cost = CallCosts.FIVE_MINUTES.getCost()*minutes;
+        } else {
+            this.cost = CallCosts.FIVE_MINUTES.getCost()*CallCosts.FIVE_MINUTES.getMinutes()
+                    + CallCosts.REMAINING_MINUTES.getCost()*(minutes-CallCosts.FIVE_MINUTES.getMinutes());
+        }
     }
 
     public LocalTime getStartTime() {
@@ -64,5 +68,13 @@ public class Call {
 
     public void setDuration(Long duration) {
         this.duration = duration;
+    }
+
+    public Double getCost() {
+        return cost;
+    }
+
+    public void setCost(Double cost) {
+        this.cost = cost;
     }
 }

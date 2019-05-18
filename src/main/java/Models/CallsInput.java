@@ -3,6 +3,8 @@ package Models;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class CallsInput {
@@ -23,8 +25,9 @@ public class CallsInput {
             return totalCost;
         }
 
+        Call maxDurCall = Collections.max(callList, Comparator.comparingLong(Call::getDuration));
 
-
+       // this.callList.stream().filter(!))
 
         return totalCost;
     }
