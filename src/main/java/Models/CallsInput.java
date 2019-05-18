@@ -27,7 +27,7 @@ public class CallsInput {
 
         Call maxDurCall = Collections.max(callList, Comparator.comparingLong(Call::getDuration));
 
-       // this.callList.stream().filter(!))
+        totalCost = this.callList.stream().filter(c -> !(c == maxDurCall)).mapToDouble(Call::getCost).sum();
 
         return totalCost;
     }
