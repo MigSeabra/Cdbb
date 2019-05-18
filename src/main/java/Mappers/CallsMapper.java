@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 public class CallsMapper {
     /**
-     * Converts String calls list to CallsInput model
+     * Converts String calls list to CallsInput model representation
      * @param calls Calls list as a list of Strings
      * @return CallsInput model
      * @throws InvalidCallInputException in case of invalid input calls list
