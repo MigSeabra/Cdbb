@@ -4,36 +4,42 @@ import java.time.LocalTime;
 
 public class Call {
 
-    private LocalTime callStartTime;
-    private LocalTime callEndTime;
+    private LocalTime startTime;
+    private LocalTime endTime;
     private Integer callNumber;
     private Integer calledNumber;
-    private Long callDuration;
+    private Long duration;
+    private Double cost;
 
     public Call() {}
 
-    public Call(LocalTime callStartTime, LocalTime callEndTime, Integer callNumber, Integer calledNumber, Long callDuration) {
-        this.callStartTime = callStartTime;
-        this.callEndTime = callEndTime;
+    public Call(LocalTime startTime, LocalTime endTime, Integer callNumber, Integer calledNumber, Long duration) {
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.callNumber = callNumber;
         this.calledNumber = calledNumber;
-        this.callDuration = callDuration;
+        this.duration = duration;
+
+        Double minutes = Math.ceil((double)duration/60);
+
+        this.cost = minutes <= 5 ? CallCosts.FIVE_MINUTES.getValue()*minutes :
+                CallCosts.FIVE_MINUTES.getValue()*5 + CallCosts.REMAINING_MINUTES.getValue()*(minutes-5);
     }
 
-    public LocalTime getCallStartTime() {
-        return callStartTime;
+    public LocalTime getStartTime() {
+        return startTime;
     }
 
-    public void setCallStartTime(LocalTime callStartTime) {
-        this.callStartTime = callStartTime;
+    public void setStartTime(LocalTime startTime) {
+        this.startTime = startTime;
     }
 
-    public LocalTime getCallEndTime() {
-        return callEndTime;
+    public LocalTime getEndTime() {
+        return endTime;
     }
 
-    public void setCallEndTime(LocalTime callEndTime) {
-        this.callEndTime = callEndTime;
+    public void setEndTime(LocalTime endTime) {
+        this.endTime = endTime;
     }
 
     public Integer getCallNumber() {
@@ -52,11 +58,11 @@ public class Call {
         this.calledNumber = calledNumber;
     }
 
-    public Long getCallDuration() {
-        return callDuration;
+    public Long getDuration() {
+        return duration;
     }
 
-    public void setCallDuration(Long callDuration) {
-        this.callDuration = callDuration;
+    public void setDuration(Long duration) {
+        this.duration = duration;
     }
 }
