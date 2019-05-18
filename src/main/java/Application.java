@@ -10,7 +10,8 @@ import java.util.List;
 public class Application {
 
     /**
-     * Computes the total cost of a calls list passed as argument and outputs it on console
+     * Computes the total cost of a calls list passed as argument and outputs it on console.
+     * Calls list must have the following format: time_of_start;time_of_finish;call_from;call_to
      * @param args Path to the file containing calls list
      */
     public static void main(String ... args) {

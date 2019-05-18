@@ -21,6 +21,11 @@ public class CallsInput {
         this.callList.add(call);
     }
 
+    /**
+     * Returns calls total cost from this callList.
+     * The highest duration call is excluded from cost calculation.
+     * @return calls list total cost
+     */
     public Double getTotalCallsCost() {
         Double totalCost = 0.0;
 

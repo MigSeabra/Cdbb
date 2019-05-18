@@ -16,6 +16,17 @@ public class Call {
 
     public Call() {}
 
+    /**
+     * Constructor for Call model
+     * This call cost is calculated according to the following rules:
+     * - The first 5 minutes of each call are billed at 5 cents per minute
+     * - The remainer of the call is billed at 2 cents per minute
+     * @param startTime call start time
+     * @param endTime call end time
+     * @param callNumber call from number
+     * @param calledNumber call to number
+     * @param duration call duration
+     */
     public Call(LocalTime startTime, LocalTime endTime, Long callNumber, Long calledNumber, Long duration) {
         this.startTime = startTime;
         this.endTime = endTime;
