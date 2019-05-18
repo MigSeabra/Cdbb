@@ -20,7 +20,7 @@ public class Call {
         this.calledNumber = calledNumber;
         this.duration = duration;
 
-        Double minutes = Math.ceil((double)duration/60);
+        Double minutes = Math.ceil((double)(duration)/60);
 
         if (minutes <= CallCosts.FIVE_MINUTES.getMinutes()) {
             this.cost = CallCosts.FIVE_MINUTES.getCost()*minutes;
