@@ -37,8 +37,8 @@ public class CallsMapper {
 
         LocalTime callStartTime = LocalTime.parse(m.group(1) + ":" + m.group(2) + ":" + m.group(3));
         LocalTime callEndTime = LocalTime.parse(m.group(4) + ":" + m.group(5) + ":" + m.group(6));
-        Integer callNumber = Integer.valueOf(m.group(7));
-        Integer calledNumber = Integer.valueOf(m.group(8));
+        Long callNumber = Long.valueOf(m.group(7));
+        Long calledNumber = Long.valueOf(m.group(8));
 
         if (callStartTime.compareTo(callEndTime) <= 0) {
             throw new InvalidCallInputException("call end time must be greater than call start time");

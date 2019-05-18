@@ -6,14 +6,14 @@ public class Call {
 
     private LocalTime startTime;
     private LocalTime endTime;
-    private Integer callNumber;
-    private Integer calledNumber;
+    private Long callNumber;
+    private Long calledNumber;
     private Long duration;
     private Double cost;
 
     public Call() {}
 
-    public Call(LocalTime startTime, LocalTime endTime, Integer callNumber, Integer calledNumber, Long duration) {
+    public Call(LocalTime startTime, LocalTime endTime, Long callNumber, Long calledNumber, Long duration) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.callNumber = callNumber;
@@ -46,19 +46,19 @@ public class Call {
         this.endTime = endTime;
     }
 
-    public Integer getCallNumber() {
+    public Long getCallNumber() {
         return callNumber;
     }
 
-    public void setCallNumber(Integer callNumber) {
+    public void setCallNumber(Long callNumber) {
         this.callNumber = callNumber;
     }
 
-    public Integer getCalledNumber() {
+    public Long getCalledNumber() {
         return calledNumber;
     }
 
-    public void setCalledNumber(Integer calledNumber) {
+    public void setCalledNumber(Long calledNumber) {
         this.calledNumber = calledNumber;
     }
 
