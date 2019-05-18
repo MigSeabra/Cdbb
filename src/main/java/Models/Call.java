@@ -2,6 +2,9 @@ package Models;
 
 import java.time.LocalTime;
 
+/**
+ * Model representation of a single call
+ */
 public class Call {
 
     private LocalTime startTime;

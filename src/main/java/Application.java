@@ -9,6 +9,10 @@ import java.util.List;
 
 public class Application {
 
+    /**
+     * Computes the total cost of a calls list passed as argument and outputs it on console
+     * @param args Path to the file containing calls list
+     */
     public static void main(String ... args) {
 
         BillService billService = new BillService();

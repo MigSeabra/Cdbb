@@ -12,7 +12,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CallsMapper {
-
+    /**
+     * Converts String calls list to CallsInput model
+     * @param calls Calls list as a list of Strings
+     * @return CallsInput model
+     * @throws InvalidCallInputException in case of invalid input calls list
+     */
     public static CallsInput toCallsInput(List<String> calls) throws InvalidCallInputException {
         CallsInput resp = new CallsInput();
 
@@ -27,6 +32,12 @@ public class CallsMapper {
         return resp;
     }
 
+    /**
+     * Converts a single call from String to Call model representation
+     * @param inCall String representation of call
+     * @return Call model
+     * @throws InvalidCallInputException in case of invalid input call String
+     */
     private static Call toCall(String inCall) throws InvalidCallInputException {
         Pattern p = Pattern.compile("(\\d{2}):(\\d{2}):(\\d{2});(\\d{2}):(\\d{2}):(\\d{2});\\+(\\d+);\\+(\\d+)");
         Matcher m = p.matcher(inCall);

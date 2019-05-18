@@ -7,6 +7,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Model representation of a list of calls
+ */
 public class CallsInput {
 
     private List<Call> callList;
